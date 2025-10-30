@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Deep Blue gradient background and variables */
+:root{
+  --bg1: #0A3D62;
+  --bg2: #3C6382;
+  --bg3: #60A3BC;
+  --page-bg: linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+  --card: #ffffff;
+  --muted: #6b7280;
+  --primary: #0A3D62;
+  --accent: #07406e;
+  --text: #0f172a;
+  --input-bg: #ffffff;
+  --input-text: #0f172a;
+  --btn-ghost-bg: rgba(2,6,23,0.04);
+  --btn-ghost-text: #0f172a;
+}
+[data-theme='dark']{
+  --page-bg: linear-gradient(135deg,#03121a,#04112a,#062135);
+  --card: #07121a;
+  --muted: #94a3b8;
+  --primary: #2ea0ff;
+  --accent: #0a66a3;
+  --text: #e6eef8;
+  --input-bg: rgba(255,255,255,0.04);
+  --input-text: #e6eef8;
+  --btn-ghost-bg: rgba(255,255,255,0.04);
+  --btn-ghost-text: #e6eef8;
+}
+
+html,body,#root{height:100%}
+body{
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  margin:0;padding:0;
+  min-height:100vh;
+  background: var(--page-bg);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text);
+  transition: background 300ms ease, color 300ms ease;
+}
+
+/* container */
+.app-wrap{width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+.dashboard{width:100%;max-width:980px;margin:0 auto;padding:1.25rem;display:grid;grid-template-columns:1fr 360px;gap:1.25rem;align-items:start}
+@media(max-width:900px){ .dashboard{grid-template-columns:1fr;max-width:680px;padding:0.75rem} }
+@media(max-width:480px){ .dashboard{gap:0.8rem;padding:0.5rem} }
+
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem}
+.brand{display:flex;align-items:center;gap:0.75rem}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1.2rem;box-shadow:0 8px 30px rgba(2,6,23,0.12)}
+.title{font-size:1.25rem;font-weight:700}
+.tag{color:var(--muted);font-size:0.95rem}
+
+/* search */
+.search-box{display:flex;gap:0.75rem;align-items:center;margin-top:0.5rem}
+.input{flex:1;padding:0.75rem;border-radius:12px;border:1px solid rgba(2,6,23,0.06);background:var(--input-bg);color:var(--input-text);outline:none;box-shadow:inset 0 2px 6px rgba(2,6,23,0.02);transition:background 200ms,color 200ms,box-shadow 200ms}
+.input::placeholder{color:var(--muted)}
+
+.btn{padding:0.65rem 0.9rem;border-radius:10px;border:none;cursor:pointer;font-weight:600;transition:transform 150ms ease,background 150ms ease;color:var(--text)}
+.btn-primary{background:var(--primary);color:white;box-shadow:0 8px 20px rgba(2,6,23,0.08)}
+.btn-ghost{background:var(--btn-ghost-bg);border:1px solid rgba(2,6,23,0.04);color:var(--btn-ghost-text)}
+
+/* card */
+.card{background:var(--card);border-radius:16px;box-shadow:0 12px 30px rgba(2,6,23,0.06);padding:1rem;border:1px solid rgba(2,6,23,0.04);transition:background 300ms ease,color 300ms}
+[data-theme='dark'] .card{box-shadow:0 8px 24px rgba(2,6,23,0.3)}
+
+/* main weather */
+.main-weather{display:flex;flex-direction:column;gap:1rem}
+.weather-top{display:flex;gap:1rem;align-items:center}
+.weather-icon{width:120px;height:120px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, rgba(10,61,98,0.12), rgba(7,64,110,0.08));}
+.temp-large{font-size:3rem;font-weight:800;color:var(--primary)}
+.small{color:var(--muted)}
+
+/* side panel */
+.side-panel{display:flex;flex-direction:column;gap:0.8rem}
+.detail-row{display:flex;justify-content:space-between;padding:0.6rem;border-radius:10px;border:1px solid rgba(2,6,23,0.04);align-items:center;background:transparent;color:var(--text)}
+
+/* value colors toggled via classes */
+.value { color: var(--text); transition: color 200ms ease; }
+.value-muted { color: var(--muted); }
+
+/* footer */
+.footer{margin-top:0.75rem;text-align:center;color:var(--muted);font-size:0.9rem}
+
+/* loader */
+.loader{width:36px;height:36px;border-radius:50%;border:4px solid rgba(10,61,98,0.12);border-top-color:var(--primary);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* small responsive tweaks */
+@media(max-width:480px){
+  .logo{width:48px;height:48px}
+  .weather-icon{width:96px;height:96px}
+  .temp-large{font-size:2.25rem}
+}
