@@ -1,0 +1,7 @@
+{
+  "template": "vite",
+  "view": "browser",
+  "container": {
+    "node": "18"
+  }
+}
